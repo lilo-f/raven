@@ -11,10 +11,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/perfilartistas.css">
+    <style>
+        /* Adicionar estilos específicos para o botão Agendar Consulta no perfil do artista */
+        .artist-visual .btn-schedule-artist {
+            margin-top: 20px; /* Espaço entre os badges e o botão */
+            padding: 12px 25px; /* Ajusta o padding */
+            font-size: 1rem; /* Ajusta o tamanho da fonte */
+            background: linear-gradient(135deg, #3b82f6 0%, #00f0ff 100%); /* Reutiliza o gradiente azul */
+            color: #000000; /* Cor do texto preta para contraste */
+            border-radius: 8px; /* Arredondamento dos cantos */
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+            font-family: 'Bebas Neue', cursive; /* Usa a fonte Bebas Neue */
+            letter-spacing: 1px;
+        }
+
+        .artist-visual .btn-schedule-artist:hover {
+            background: #3b82f6; /* Cor sólida no hover */
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(59, 130, 246, 0.4);
+        }
+    </style>
 </head>
 <body>
- <!-- ***** Header Area Start ***** -->
-  <nav id="navbar" class="navbar" role="navigation" aria-label="Menu principal">
+ <nav id="navbar" class="navbar" role="navigation" aria-label="Menu principal">
         <div class="nav-container">
             <div class="nav-brand">
                 <span class="brand-mascot" aria-hidden="true">🐦‍⬛</span>
@@ -30,16 +55,14 @@
                 <li role="none"><a href="/artists.html" role="menuitem" class="nav-link active"><i class="fas fa-paint-brush"></i> Artistas</a></li>
                 <li role="none"><a href="/portfolio.html" role="menuitem" class="nav-link"><i class="fas fa-images"></i> Portfólio</a></li>
                 <li role="none"><a href="#contact" role="menuitem" class="nav-link"><i class="fas fa-envelope"></i> Contato</a></li>
-                <li role="none"><a href="#booking" role="menuitem" class="nav-link"><i class="fas fa-calendar-alt"></i> Agendamento</a></li>
+                <li role="none"><a href="/agendamento.html" role="menuitem" class="nav-link"><i class="fas fa-calendar-alt"></i> Agendamento</a></li>
             </ul>
         </div>
     </nav>
 
 
-    <!-- About Section - Creative Version -->
     <section class="about-creative">
         <div class="creative-container">
-            <!-- Left Panel - Artist Visual Identity -->
             <div class="artist-visual">
                 <div class="polaroid-frame">
                     <img src="/ASSETS/images/team-member-01.jpg" alt="Alex Silva no estúdio" class="polaroid-img">
@@ -61,9 +84,9 @@
                         </div>
                     </div>
                 </div>
+                <a href="/agendamento.html" class="btn btn-schedule-artist">Agendar Consulta</a>
             </div>
 
-            <!-- Right Panel - Creative Story -->
             <div class="artist-story">
                 <h2 class="creative-title">A <span>Arte</span> Sob a <span>Pele</span></h2>
                 
@@ -98,17 +121,10 @@
                     </ul>
                 </div>
                 
-                <div class="studio-cta">
-                    <p>Quer conhecer meu processo criativo?</p>
-                    <a href="#" class="studio-tour-btn">
-                        <i class="fas fa-video"></i> Tour Virtual pelo Estúdio
-                    </a>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
     <section class="portfolio-section">
         <div class="container">
             <div class="section-title">
@@ -187,22 +203,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Pronto para transformar sua ideia em arte?</h2>
-                <p>Agende uma consulta gratuita para discutir seu projeto e receber um orçamento personalizado.</p>
-                <div class="cta-buttons">
-                    <a href="#" class="btn">Agendar Consulta</a>
-                    <a href="#" class="btn btn-outline">Ver Portfólio Completo</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -234,7 +234,7 @@
                         <li><a href="/artists.html">Artistas</a></li>
                         <li><a href="/portfolio.html">Portfólio</a></li>
                         <li><a href="#testimonials">Depoimentos</a></li>
-                        <li><a href="#booking">Agendamento</a></li>
+                        <li><a href="/agendamento.html">Agendamento</a></li>
                         <li><a href="#contact">Contato</a></li>
                     </ul>
                 </div>
@@ -317,7 +317,8 @@
                 cssEasing: 'cubic-bezier(0.25, 0, 0.25, 1)'
             });
 
-            // Smooth scrolling for anchor links
+            // Smooth scrolling for anchor links (if any remain that point to #id)
+            // Note: The "Agendar Consulta" button now points directly to /agendamento.html
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -327,7 +328,7 @@
                     
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80,
+                            top: targetElement.offsetTop - 80, // Adjust for fixed header
                             behavior: 'smooth'
                         });
                     }
